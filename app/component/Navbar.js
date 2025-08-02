@@ -11,10 +11,11 @@ export default function Navbar() {
         </div>
 
         {/* Menu */}
-        <nav className="flex flex-wrap justify-center gap-6 text-violet-800 mt-5 text-sm uppercase text-lavender-600 tracking-wide">
-          <Link href="#">Home</Link>
-          <Link href="#">About</Link>
-          <Link href="#">Contact</Link>
+        <nav className="flex flex-wrap justify-center gap-6 text-violet-800 mt-5  uppercase text-lavender-600 tracking-wide">
+          <Link href="/">Home</Link>
+          <Link href="/about">About</Link>
+          <Link href="/services">Services</Link>
+          <Link href="/contact">Contact</Link>
 
           {/* Dropdowns (Non-functional for now) */}
           <div className="relative group cursor-pointer">
