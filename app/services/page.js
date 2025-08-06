@@ -1,10 +1,10 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
-// Animation variants
+// Animation Variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -16,23 +16,11 @@ const containerVariants = {
   }
 };
 
-const cardVariants = {
-  hidden: { y: 50, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.8,
-      ease: [0.33, 1, 0.68, 1]
-    }
-  }
-};
-
 const itemVariants = {
   hidden: { y: 30, opacity: 0 },
   visible: {
     y: 0,
-    opacity: 1, 
+    opacity: 1,
     transition: {
       duration: 0.6,
       ease: [0.25, 0.1, 0.25, 1]
@@ -45,89 +33,82 @@ const fadeIn = {
   visible: { opacity: 1, transition: { duration: 0.8 } }
 };
 
+// Service Card
 const ServiceCategoryCard = ({ title, services, image, index }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const isImageLeft = index % 2 === 0;
 
   return (
     <motion.div
-      variants={cardVariants}
+      variants={itemVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ delay: index * 0.1 }}
-      className="flex flex-col rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white"
+      className={`flex flex-col md:flex-row items-center justify-between gap-8 bg-white shadow-lg rounded-xl overflow-hidden p-4 md:p-8 transition-all duration-300 ${!isImageLeft ? 'md:flex-row-reverse' : ''}`}
     >
-      {/* Image Section - Full Width */}
-      <div className="relative h-72 w-full">
+      {/* Image */}
+      <div className="w-full md:w-1/2 h-64 relative">
         <Image
           src={image}
           alt={title}
           fill
-          className="object-cover"
-          quality={100}
+          className="object-cover rounded-lg"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40" />
-        <h3 className="absolute bottom-6 left-6 right-6 text-2xl font-light text-white">
-          {title}
-        </h3>
       </div>
-      
-      {/* Text Content Section */}
-      <div className="p-6 flex flex-col h-full">
-        {/* Preview Services */}
-        <ul className="space-y-3 mb-6">
+
+      {/* Content */}
+      <div className="w-full md:w-1/2">
+        <h3 className="text-2xl font-light text-gray-900 mb-4 uppercase tracking-wide">{title}</h3>
+
+        <ul className="space-y-2 mb-4">
           {services.slice(0, 3).map((service, i) => (
-            <li key={i} className="flex items-start">
-              <span className="text-lavender-600 mr-3 mt-1 text-xs">○</span>
-              <span className="text-gray-700">{service}</span>
+            <li key={i} className="flex items-start text-gray-700">
+              <span className="text-purple-600 mr-2 mt-1 text-xs">○</span>
+              {service}
             </li>
           ))}
         </ul>
-        
-        {/* Expanded Services */}
+
         {isExpanded && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="mb-6"
+            className="mb-4"
           >
-            <h4 className="text-sm font-medium text-gray-500 mb-3">FULL SERVICE MENU</h4>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <h4 className="text-sm font-medium text-gray-500 mb-2">FULL SERVICE MENU</h4>
+            <ul className="grid grid-cols-1 gap-2">
               {services.slice(3).map((service, i) => (
-                <li key={i} className="flex items-start">
-                  <span className="text-lavender-600 mr-3 mt-1 text-xs">○</span>
-                  <span className="text-gray-700">{service}</span>
+                <li key={i} className="flex items-start text-gray-700">
+                  <span className="text-purple-600 mr-2 mt-1 text-xs">○</span>
+                  {service}
                 </li>
               ))}
             </ul>
           </motion.div>
         )}
-        
-        {/* Action Buttons */}
-        <div className="mt-auto flex justify-between items-center">
-          <button className="text-lavender-600 hover:text-lavender-800 text-sm font-medium flex items-center transition-colors">
+
+        <div className="flex justify-between items-center">
+          <button className="text-purple-600 hover:text-purple-800 text-sm font-medium flex items-center transition-colors">
             Book Now
             <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
-          
+
           {services.length > 3 && (
-            <button 
+            <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="text-lavender-600 hover:text-lavender-800 text-sm font-medium flex items-center transition-colors"
+              className="text-purple-600 hover:text-purple-800 text-sm font-medium flex items-center transition-colors"
             >
               {isExpanded ? (
                 <>
-                  Show Less
-                  <FiChevronUp className="ml-1" />
+                  Show Less <FiChevronUp className="ml-1" />
                 </>
               ) : (
                 <>
-                  View All {services.length} Services
-                  <FiChevronDown className="ml-1" />
+                  View All {services.length} Services <FiChevronDown className="ml-1" />
                 </>
               )}
             </button>
@@ -138,75 +119,293 @@ const ServiceCategoryCard = ({ title, services, image, index }) => {
   );
 };
 
+// MAIN PAGE
 export default function ServicesPage() {
   const serviceCategories = [
-    // ... (same service categories array as before)
+    {
+      title: "Hair Cuts & Styling",
+      services: [
+        "Basic Hair Cut (Adult)",
+        "Advance Hair Cut (Adult)",
+        "Creative Hair Cut (Adult)",
+        "Basic Hair Cut (Kids)",
+        "Advance Stylish Hair Cut (Kids)",
+        "Creative Hair Cut (Kids)",
+        "Hair Wash & Blow Dry",
+        "Deep Nourishing Hair Wash & Blow Dry",
+        "Keratin Protect Hair Wash & Blow Dry",
+        "Head Oil Massage",
+        "Head Oil Massage & Deep Conditioning Hairwash",
+        "Theraputic Massage",
+        "Blow Dry Setting",
+        "Curl Setting (Tong)",
+        "Straightening (Iron)"
+      ],
+      image: "/hair3.jpg"
+    },
+    {
+      title: "Spa Rituals",
+      services: [
+        "Organic Hair Care Retreat",
+        "Basic Hair Spa",
+        "Curls Define Hair Spa",
+        "Repair & Restore Hair Spa",
+        "Color Vibrancy Hair Spa",
+        "Smooth Perfect Hair Spa",
+        "Hydrate Hair Spa",
+        "Keratin Hair Spa",
+        "Bio-Active Scalp & Hair Care Rituals",
+        "Essential Oil Hair Retreat",
+        "Premium Repair & Restore Hair Spa",
+        "Premium Vibrancy Hair Spa",
+        "Premium Smooth Perfect Hair Spa",
+        "Premium Hydrate Hair Spa"
+      ],
+      image: "/hair2.jpg"
+    },
+    {
+      title: "Scalp Treatments",
+      services: [
+        "Basic Anti-Dandruff Treatment",
+        "Advanced Anti-Dandruff Treatment",
+        "Basic Anti-Hair Fall Treatment",
+        "Advanced Anti-Hair Fall Treatment",
+        "Scalp Advanced Treatment",
+        "Scalp Balancing Treatment"
+      ],
+      image: "/scalp.png"
+    },
+    {
+      title: "Keratin & Protein Treatments",
+      services: [
+        "Hair Keratin Treatments",
+        "Advanced Pro-Keratin Treatments",
+        "Kera-plex Protein Treatments",
+        "Kera Smoothening",
+        "Hair Tanino Botox (Filler) Treatments",
+        "Boto-Plastia Treatments",
+        "Neo-Plex Treatments"
+      ],
+      image: "/keratin.jpg"
+    },
+    {
+      title: "Basic Services",
+      services: [
+        "Basic Facial",
+        "Eye Brow Threading",
+        "Upper Lip / Chin Threading",
+        "D-Tan",
+        "Face Clean Up (Basic)",
+        "Face Clean Up (Advanced)",
+        "Blackhead Removal Clean Up",
+        "Eye Care Brightening Treatment"
+      ],
+      image: "/basic.jpg"
+    },
+    {
+      title: "Skin Rituals - Regular",
+      services: [
+        "Insta Glow Facial",
+        "Insta Fair Facial",
+        "Radiance Facial",
+        "Whitening Facial",
+        "Brightening Facial",
+        "Fruit Facial",
+        "Purifying Facial"
+      ],
+      image: "/regular.jpg"
+    },
+    {
+      title: "Skin Rituals - Advanced",
+      services: [
+        "Anti-Acne Treatment",
+        "Anti-Pigmentation Treatment",
+        "Anti-Aging Facial Treatment",
+        "Aqua Facial",
+        "Silver Facial",
+        "Pearl Facial",
+        "Gold Facial"
+      ],
+      image: "/advanced.jpg"
+    },
+    {
+      title: "Skin Rituals - Premium",
+      services: [
+        "Detox Facial",
+        "Gold Radiance Facial",
+        "Diamond Glow Facial",
+        "Wine Facial",
+        "Vitamin-C Facial",
+        "Retinol Facial",
+        "Basic Hydra Facial"
+      ],
+      image: "/premium.jpg"
+    },
+    {
+      title: "Skin Rituals - Luxury",
+      services: [
+        "Jewel Facial",
+        "Preservita Fruit Extract Facial",
+        "Dermo-Spa Facial",
+        "Ultimo Shine Facial",
+        "Pro-Hydra Facial"
+      ],
+      image: "/luxury.jpg"
+    },
+    {
+      title: "Waxing & Polishing",
+      services: [
+        "Chest Waxing (Male)",
+        "Full Face Brazilian Waxing",
+        "Full Face Waxing (Advanced)",
+        "Full Leg Waxing",
+        "Full Body Waxing",
+        "Half Leg Polishing",
+        "Full Arms Polishing",
+        "Full Back Polishing",
+        "Full Leg Polishing",
+        "Full Body Polishing"
+      ],
+      image: "/waxing.jpg"
+    },
+    {
+      title: "Pedicure & Manicure",
+      services: [
+        "Essential Pedicure",
+        "Skin Booster Pedicure",
+        "Express Pedicure",
+        "Luxury Whitening Pedicure",
+        "Foot Spa Pedicure",
+        "Essential Manicure",
+        "Skin Booster Manicure",
+        "Express Manicure",
+        "Luxury Whitening Pedicure",
+        "Hand Spa Manicure"
+      ],
+      image: "/pedicure.jpg"
+    },
+    {
+      title: "Nail Arts & Piercing",
+      services: [
+        "Gel Overlap Single Hand",
+        "Gel Overlap Both Hands",
+        "Glitter/Nail",
+        "Nail Polish Both Hands",
+        "Nail Arts/Nail",
+        "Nail Extension Single Hand",
+        "Nail Extension Both Hands",
+        "French Manicure",
+        "Bridal Design Both Hands",
+        "Refilling Both Hands",
+        "Chrome Polish Both Hands",
+        "Nose Piercing",
+        "Both Ear Piercing",
+        "Single Ear Piercing"
+      ],
+      image: "/nail.jpg"
+    },
+    {
+      title: "Makeup & Bridal",
+      services: [
+        "Hair Do",
+        "Party Makeup (Basic)",
+        "Party Makeup (Pro)",
+        "Pre Bridal Makeup (Indoor)",
+        "Pre Bridal Makeup (Outdoor)",
+        "Engagement Makeup",
+        "Party Makeup for Him",
+        "Groom Makeup",
+        "Premium Groom Makeup",
+        "Luxury Groom Makeup",
+        "Kid Makeup",
+        "Premium Bridal Makeup",
+        "Luxury Bridal Makeup",
+        "Platinum Bridal Makeup"
+      ],
+      image: "/bridal.jpg"
+    },
+    {
+      title: "Mehendi & Extensions",
+      services: [
+        "Bridal Mehendi",
+        "Bridal Mehendi (Full Hands)",
+        "Bridal Mehendi (Full Hands & Feet)",
+        "Party Mehendi (Single Hand)",
+        "Party Mehendi (Both Hands)",
+        "Arabic Mehendi Design",
+        "Traditional Mehendi Design",
+        "Hair Extensions (Basic)",
+        "Hair Extensions (Premium)",
+        "Hair Extensions (Luxury)"
+      ],
+      image: "/mehendi.jpg"
+    }
   ];
 
   return (
     <main className="bg-white">
+
       {/* Hero Section */}
-      <section className="relative h-[80vh] min-h-[700px]">
-        <div className="absolute inset-0 bg-black/30 z-10 flex items-center justify-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center px-4 z-20"
-          >
-            <h1 className="text-5xl md:text-7xl font-light text-white mb-6 uppercase tracking-wider">
-              Our Services
-            </h1>
-            <div className="w-24 h-0.5 bg-lavender-400 mx-auto mb-8"></div>
-            <p className="text-xl text-white max-w-2xl mx-auto">
-              Where artistry meets luxury in every treatment
-            </p>
-          </motion.div>
+      <section className="relative h-screen">
+        <div className="absolute inset-0">
+          <Image
+            src="/6cut.jpeg"
+            alt="Lavender Park Salon Team"
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-black/40 bg-opacity-40 flex items-center justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center px-4"
+            >
+              <h1 className="text-4xl md:text-6xl font-light text-white mb-6 uppercase tracking-wider">
+                Our Services
+              </h1>
+              <p className="text-xl text-white max-w-2xl mx-auto">
+                Where artistry meets luxury in every treatment
+              </p>
+            </motion.div>
+          </div>
         </div>
-        <Image
-          src="/images/services/services-hero.jpg"
-          alt="Salon Services"
-          fill
-          className="object-cover"
-          priority
-          quality={100}
-        />
       </section>
 
-      {/* Introduction */}
-      <motion.section 
+      {/* Intro Section */}
+      <motion.section
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={containerVariants}
         className="py-24 px-4 md:px-8 max-w-6xl mx-auto text-center"
       >
-        <motion.h2 
+        <motion.h2
           variants={itemVariants}
           className="text-3xl md:text-4xl font-light text-gray-900 mb-8 uppercase tracking-wide"
         >
           Curated Beauty Experiences
         </motion.h2>
-        <motion.p 
+        <motion.p
           variants={itemVariants}
           className="text-gray-600 leading-relaxed max-w-3xl mx-auto text-lg"
         >
-          Our comprehensive menu of services is designed to pamper, transform, and elevate your natural beauty. 
+          Our comprehensive menu of services is designed to pamper, transform, and elevate your natural beauty.
           Each treatment is an experience crafted with precision and care.
         </motion.p>
       </motion.section>
 
-      {/* Services Grid */}
+      {/* Services Section */}
       <section className="px-4 md:px-8 pb-24 max-w-7xl mx-auto">
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="space-y-16"
         >
           {serviceCategories.map((category, index) => (
-            <ServiceCategoryCard 
+            <ServiceCategoryCard
               key={index}
               title={category.title}
               services={category.services}
@@ -217,22 +416,22 @@ export default function ServicesPage() {
         </motion.div>
       </section>
 
-      {/* Pricing CTA */}
+      {/* CTA Section */}
       <motion.section
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={fadeIn}
-        className="py-24 bg-lavender-50"
+        className="py-24 bg-purple-50"
       >
         <div className="max-w-4xl mx-auto text-center px-4">
-          <motion.h2 
+          <motion.h2
             variants={itemVariants}
             className="text-3xl md:text-4xl font-light text-gray-900 mb-6 uppercase tracking-wide"
           >
             Tailored Beauty Packages
           </motion.h2>
-          <motion.p 
+          <motion.p
             variants={itemVariants}
             className="text-gray-600 mb-8 max-w-2xl mx-auto"
           >
@@ -242,73 +441,20 @@ export default function ServicesPage() {
             <motion.button
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="bg-lavender-600 text-white px-8 py-4 uppercase tracking-wider text-sm font-medium hover:bg-lavender-700 transition-all duration-300 shadow-md"
+              className="bg-purple-600 text-white px-8 py-4 uppercase tracking-wider text-sm font-medium hover:bg-purple-700 transition-all duration-300 shadow-md"
             >
               Request Consultation
             </motion.button>
             <motion.button
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="border-2 border-lavender-600 text-lavender-600 px-8 py-4 uppercase tracking-wider text-sm font-medium hover:bg-white transition-all duration-300 shadow-md"
+              className="border-2 border-purple-600 text-purple-600 px-8 py-4 uppercase tracking-wider text-sm font-medium hover:bg-white transition-all duration-300 shadow-md"
             >
               View Full Menu
             </motion.button>
           </div>
         </div>
       </motion.section>
-
-      {/* Signature Services */}
-      <section className="py-16 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <h2 className="text-3xl font-light text-center mb-16 uppercase tracking-wide">
-            Signature Experiences
-          </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <div className="text-center">
-              <div className="relative h-48 w-48 mx-auto mb-6 rounded-full overflow-hidden">
-                <Image
-                  src="/images/services/signature-1.jpg"
-                  alt="Luxury Hair Ritual"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="text-xl font-light mb-3">Lavender Hair Ritual</h3>
-              <p className="text-gray-600 max-w-md mx-auto">
-                Our 120-minute transformative hair treatment combining keratin therapy with lavender-infused oils.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="relative h-48 w-48 mx-auto mb-6 rounded-full overflow-hidden">
-                <Image
-                  src="/images/services/signature-2.jpg"
-                  alt="Diamond Facial"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="text-xl font-light mb-3">Diamond Luminescence Facial</h3>
-              <p className="text-gray-600 max-w-md mx-auto">
-                A 90-minute premium facial using diamond-tipped microdermabrasion and gold-infused serums.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="relative h-48 w-48 mx-auto mb-6 rounded-full overflow-hidden">
-                <Image
-                  src="/images/services/signature-3.jpg"
-                  alt="Royal Treatment"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="text-xl font-light mb-3">Royal Spa Journey</h3>
-              <p className="text-gray-600 max-w-md mx-auto">
-                A 3-hour immersive experience including full-body treatment, massage, and personalized care.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }

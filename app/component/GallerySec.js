@@ -30,7 +30,7 @@ export const  GallerySection = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
-      className="py-16  bg-white"
+      className="  bg-white"
     >
       <div className="">
        
@@ -57,7 +57,7 @@ export const  GallerySection = () => {
               variants={textVariants}
               className="text-center p-6"
             >
-              <h3 className="text-5xl md:text-6xl font-light text-white mb-2">
+              <h3 className="text-6xl md:text-7xl font-bold text-white mb-2">
                 Luxurious Interior
               </h3>
               <p className="text-white opacity-90 max-w-md">
@@ -90,7 +90,7 @@ export const  GallerySection = () => {
               <motion.div 
                 variants={textVariants}
               >
-                <h3 className="text-xl md:text-2xl font-light text-white mb-2">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
                   Expert Hair Services
                 </h3>
                 <p className="text-white opacity-90 text-sm">
@@ -99,7 +99,7 @@ export const  GallerySection = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="mt-4 bg-lavender-600 text-white px-4 py-2 text-xs uppercase tracking-wider "
+                  className="mt-4 bg-lavender-600 border-2 font-bold text-white px-4 py-2 text-xs uppercase tracking-wider "
                 >
                   View Services
                 </motion.button>
@@ -128,7 +128,7 @@ export const  GallerySection = () => {
               <motion.div 
                 variants={textVariants}
               >
-                <h3 className="text-xl md:text-2xl font-light text-white mb-2">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
                   Relaxing Spa Treatments
                 </h3>
                 <p className="text-white opacity-90 text-sm">
@@ -137,7 +137,7 @@ export const  GallerySection = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="mt-4 bg-lavender-600 text-white px-4 py-2 text-xs uppercase tracking-wider "
+                  className="mt-4 bg-lavender-600 border-2 font-bold text-white px-4 py-2 text-xs uppercase tracking-wider "
                 >
                   Book Now
                 </motion.button>

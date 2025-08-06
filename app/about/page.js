@@ -87,12 +87,12 @@ export default function AboutPage() {
       <section className="relative h-screen">
         <div className="absolute inset-0">
           <Image
-            src="/images/about-hero.jpg"
+            src="/5cut.jpeg"
             alt="Lavender Park Salon Team"
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/40 bg-opacity-40 flex items-center justify-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -112,102 +112,108 @@ export default function AboutPage() {
 
       {/* Our Story Section */}
       <motion.section 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={containerVariants}
-        className="relative bg-white py-16 px-4 md:px-10"
-      >
-        {/* Sticky Book Now Button */}
-        
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, margin: "-100px" }}
+  variants={containerVariants}
+  className="relative bg-[url('/bg1.jpg')] bg-cover bg-center bg-no-repeat py-16 px-4 md:px-10"
+>
+  {/* Optional Overlay */}
+  <div className="absolute inset-0  z-0"></div>
 
-        {/* Content */}
-        <div className="max-w-3xl mx-auto text-center md:text-left">
-          <motion.h2 
-            variants={itemVariants}
-            className="text-3xl md:text-4xl font-light text-gray-900 mb-6 uppercase tracking-wide"
-          >
-            Our Humble Beginnings
-          </motion.h2>
+  {/* Content */}
+  <div className="max-w-3xl mx-auto text-center md:text-left relative z-10">
+    <motion.h2 
+      variants={itemVariants}
+      className="text-3xl md:text-4xl font-light text-gray-900 mb-6 uppercase tracking-wide"
+    >
+      Our Humble Beginnings
+    </motion.h2>
 
-          <motion.p 
-            variants={itemVariants}
-            className="text-gray-600 leading-relaxed mb-4"
-          >
-            Lavender Park Salon was founded in 2018 with a simple vision: to create a sanctuary where beauty meets wellness, and every guest feels valued and pampered. What started as a small boutique salon in Dankuni has blossomed into a beloved beauty destination serving clients from across the region.
-          </motion.p>
+    <motion.p 
+      variants={itemVariants}
+      className="text-gray-600 leading-relaxed mb-4"
+    >
+      Lavender Park Salon was founded in 2018 with a simple vision: to create a sanctuary where beauty meets wellness, and every guest feels valued and pampered. What started as a small boutique salon in Dankuni has blossomed into a beloved beauty destination serving clients from across the region.
+         
+    </motion.p>
 
-          <motion.p 
-            variants={itemVariants}
-            className="text-gray-600 leading-relaxed mb-8"
-          >
-            Our founder, Priya Sharma, envisioned a space that went beyond traditional salon services—a place that celebrated individuality, fostered creativity, and prioritized both outer transformation and inner confidence. Today, that vision lives on through our talented team and the exceptional experiences we create daily.
-          </motion.p>
+    <motion.p 
+      variants={itemVariants}
+      className="text-gray-600 leading-relaxed mb-8"
+    >
+      Our founder, Priya Sharma, envisioned a space...
+    </motion.p>
 
-          {/* Button */}
-          <motion.button 
-            variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="uppercase border border-lavender-600 text-lavender-700 hover:bg-lavender-600 hover:text-white transition px-6 py-2 text-sm tracking-wider"
-          >
-            Meet Our Team
-          </motion.button>
-        </div>
-      </motion.section>
+    {/* Button */}
+    <motion.button 
+      variants={itemVariants}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="uppercase border border-lavender-600 text-lavender-700 hover:bg-lavender-600 hover:text-white transition px-6 py-2 text-sm tracking-wider"
+    >
+      Meet Our Team
+    </motion.button>
+  </div>
+</motion.section>
+
 
       {/* Mission & Values */}
       <motion.section 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={containerVariants}
-        className="py-16 bg-lavender-50"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  variants={containerVariants}
+  className="relative text-white bg-cover bg-center md:bg-fixed py-20 shadow-lg"
+  style={{
+    backgroundImage: "url('/img/4.jpeg')",
+    // fontFamily: 'var(--font-lexendZetta)'
+  }}
+>
+  <div className="absolute inset-0 bg-black/40 z-0"></div> {/* Optional dark overlay */}
+
+  <div className="relative z-10 max-w-6xl mx-auto px-4">
+    <motion.h2 
+      variants={itemVariants}
+      className="text-5xl font-light text-center mb-12 uppercase tracking-wide"
+    >
+      Our Core Values
+    </motion.h2>
+    
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <motion.div 
+        variants={itemVariants}
+        className="bg-white/90 p-8 rounded-lg shadow-sm text-center backdrop-blur-sm"
       >
-        <div className="max-w-6xl mx-auto px-4">
-          <motion.h2 
-            variants={itemVariants}
-            className="text-3xl font-light text-center mb-12 uppercase tracking-wide"
-          >
-            Our Core Values
-          </motion.h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div 
-              variants={itemVariants}
-              className="bg-white p-8 rounded-lg shadow-sm text-center"
-            >
-              <div className="text-lavender-600 text-4xl mb-4">✨</div>
-              <h3 className="text-xl font-medium mb-3">Excellence in Service</h3>
-              <p className="text-gray-600">
-                We commit to delivering exceptional quality in every service, using premium products and staying current with industry advancements.
-              </p>
-            </motion.div>
-            
-            <motion.div 
-              variants={itemVariants}
-              className="bg-white p-8 rounded-lg shadow-sm text-center"
-            >
-              <div className="text-lavender-600 text-4xl mb-4">❤️</div>
-              <h3 className="text-xl font-medium mb-3">Client-Centered Care</h3>
-              <p className="text-gray-600">
-                Your comfort, preferences, and satisfaction guide every decision we make. We listen carefully to understand your unique needs.
-              </p>
-            </motion.div>
-            
-            <motion.div 
-              variants={itemVariants}
-              className="bg-white p-8 rounded-lg shadow-sm text-center"
-            >
-              <div className="text-lavender-600 text-4xl mb-4">🌿</div>
-              <h3 className="text-xl font-medium mb-3">Sustainable Beauty</h3>
-              <p className="text-gray-600">
-                We prioritize eco-friendly practices and products that are gentle on both our clients and the environment.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
+        <h3 className="text-3xl font-bold text-purple-700 mb-3">Excellence in Service</h3>
+        <p className="text-gray-700">
+          We commit to delivering exceptional quality in every service, using premium products and staying current with industry advancements.
+        </p>
+      </motion.div>
+
+      <motion.div 
+        variants={itemVariants}
+        className="bg-white/90 p-8 rounded-lg shadow-sm text-center backdrop-blur-sm"
+      >
+        <h3 className="text-3xl font-bold text-purple-700 mb-3">Client-Centered Care</h3>
+        <p className="text-gray-700">
+          Your comfort, preferences, and satisfaction guide every decision we make. We listen carefully to understand your unique needs.
+        </p>
+      </motion.div>
+
+      <motion.div 
+        variants={itemVariants}
+        className="bg-white/90 p-8 rounded-lg shadow-sm text-center backdrop-blur-sm"
+      >
+        <h3 className="text-3xl font-bold text-purple-700 mb-3">Sustainable Beauty</h3>
+        <p className="text-gray-700">
+          We prioritize eco-friendly practices and products that are gentle on both our clients and the environment.
+        </p>
+      </motion.div>
+    </div>
+  </div>
+</motion.section>
+
 
       {/* Team Section */}
       <motion.section 
@@ -215,12 +221,12 @@ export default function AboutPage() {
         whileInView="visible"
         viewport={{ once: true }}
         variants={containerVariants}
-        className="py-16 bg-white"
+        className=" relative bg-[url('/bg3.jpg')] bg-cover bg-center bg-no-repeat py-16 px-4 md:px-10"
       >
         <div className="max-w-6xl mx-auto px-4">
           <motion.h2 
             variants={itemVariants}
-            className="text-3xl font-light text-center mb-4 uppercase tracking-wide"
+            className="text-4xl text-purple-700 font-bold  text-center mb-4 uppercase tracking-wide"
           >
             Meet Our Artists
           </motion.h2>
@@ -252,7 +258,7 @@ export default function AboutPage() {
         whileInView="visible"
         viewport={{ once: true }}
         variants={containerVariants}
-        className="grid grid-cols-1 md:grid-cols-2 min-h-[70vh] bg-[#f9f9f9] relative"
+        className="grid grid-cols-1 md:grid-cols-2 min-h-[70vh]  relative  bg-[url('/bg3.jpg')] bg-cover bg-center bg-no-repeat "
       >
         {/* Left Image */}
         <motion.div 
@@ -260,7 +266,7 @@ export default function AboutPage() {
           className="relative w-full h-full min-h-[400px]"
         >
           <Image
-            src="/images/salon-interior.jpg"
+            src="/aboutimg.png"
             alt="Salon Interior"
             fill
             className="object-cover"
@@ -305,7 +311,7 @@ export default function AboutPage() {
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
-        className="relative bg-white py-16 px-4 md:px-10"
+        className="relative bg-white py-16 px-4 md:px-10  bg-[url('/bg3.jpg')] bg-cover bg-center bg-no-repeat "
       >
         {/* Content */}
         <div className="max-w-3xl mx-auto text-center">

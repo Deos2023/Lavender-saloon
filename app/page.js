@@ -61,10 +61,10 @@ const Counter = ({ target, label }) => {
       variants={itemVariants}
       className="text-center"
     >
-      <div className="text-4xl md:text-5xl font-bold text-lavender-600 mb-2">
+      <div className="text-5xl md:text-6xl font-bold text-lavender-600 mb-2">
         {count}+
       </div>
-      <div className="text-gray-600 uppercase text-sm tracking-wider">
+      <div className="text-white font-bold uppercase   tracking-wider">
         {label}
       </div>
     </motion.div>
@@ -105,9 +105,9 @@ const ContactForm = () => {
   return (
     <motion.div 
       variants={fadeIn}
-      className="bg-white p-8 rounded-lg text-black shadow-lg max-w-4xl mx-auto"
+      className=" p-8 rounded-lg text-black  max-w-4xl mx-auto"
     >
-      <h3 className="text-2xl font-light mb-6 text-center text-black uppercase tracking-wide">Contact Us</h3>
+      <h3 className="text-4xl font-bold mb-6 text-center text-black uppercase tracking-wide">Contact Us</h3>
       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label htmlFor="name" className="block text-gray-700 mb-2">Name</label>
@@ -176,7 +176,7 @@ const ContactForm = () => {
         <div className="md:col-span-2 text-center">
           <button
             type="submit"
-            className="bg-lavender-600 text-white px-6 py-3 rounded uppercase tracking-wider hover:bg-lavender-700 transition"
+            className="bg-lavender-600 border-2 text-purple-700 px-6 py-3 rounded uppercase tracking-wider hover:bg-lavender-700 transition"
           >
             Send Message
           </button>
@@ -193,12 +193,12 @@ export default function Home() {
       
       {/* About text  */}
       <motion.section 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={containerVariants}
-        className="relative bg-white py-16 px-4 md:px-10"
-      >
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, margin: "-100px" }}
+  variants={containerVariants}
+  className="relative bg-[url('/bg1.jpg')] bg-cover bg-center bg-no-repeat py-16 px-4 md:px-10"
+>
         {/* Sticky Book Now Button */}
        
 
@@ -226,11 +226,11 @@ export default function Home() {
           </motion.p>
 
           {/* Button */}
-          <motion.button 
+         <motion.button 
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="uppercase border border-lavender-600 text-lavender-700 hover:bg-lavender-600 hover:text-white transition px-6 py-2 text-sm tracking-wider"
+            className="uppercase border-2 font-bold border-lavender-600 text-purple-800 hover:bg-lavender-600 text-lg transition px-6 py-2  tracking-wider"
           >
             Book an Appointment
           </motion.button>
@@ -243,7 +243,7 @@ export default function Home() {
         whileInView="visible"
         viewport={{ once: true }}
         variants={containerVariants}
-        className="py-16 bg-lavender-50"
+        className="py-16 bg-purple-950"
       >
         <div className="max-w-6xl mx-auto px-4">
           <motion.h2 
@@ -253,7 +253,7 @@ export default function Home() {
             Our Impact in Numbers
           </motion.h2>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 text-white font-bold gap-8">
             <Counter target={500} label="Happy Clients" />
             <Counter target={50} label="Services Offered" />
             <Counter target={10} label="Skilled Professionals" />
@@ -268,7 +268,8 @@ export default function Home() {
         whileInView="visible"
         viewport={{ once: true }}
         variants={containerVariants}
-        className="grid grid-cols-1 md:grid-cols-2 min-h-screen bg-[#f9f9f9] relative"
+        className="grid grid-cols-1 md:grid-cols-2 min-h-screen  relative    bg-[url('/bg3.jpg')] bg-cover bg-center bg-no-repeat "
+
       >
         {/* Left Text Section */}
         <motion.div 
@@ -276,62 +277,74 @@ export default function Home() {
           className="flex flex-col justify-center px-8 md:px-20 py-12"
         >
           <h2 className="text-4xl md:text-5xl font-light leading-tight mb-6 text-black">
-            HOME TO LONDON'S <br /> FINEST HAIR ARTISTS
+            HOME TO Lavender Park Salon'S <br /> FINEST HAIR ARTISTS
           </h2>
           <p className="text-gray-500 text-lg leading-relaxed">
-            Welcome to the House of Gielly Green. Take a look around our Flagship salon, see the talented team of
+            Welcome to the House of Lavender Park Salon. Take a look around our Flagship salon, see the talented team of
             artists and discover London's leading hair and beauty salon.
           </p>
         </motion.div>
 
         {/* Right Image with Play Button */}
         <motion.div 
-          variants={itemVariants}
-          className="relative w-full h-[400px] md:h-auto"
-        >
-          <Image
-            src="/images/your-salon-image.jpg" // Replace with your actual image path
-            alt="Salon Video"
-            fill
-            className="object-cover"
-          />
+  variants={itemVariants}
+  className="relative w-full h-[400px] md:h-[600px] overflow-hidden"
+>
+  {/* Video Element */}
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    className="absolute inset-0 w-full h-full object-cover"
+    poster="/images/video-p.jpg" // Fallback image when video is loading
+  >
+    <source src="/vid1.mp4" type="video/mp4" />
+    {/* <source src="/videos/salon-showcase.webm" type="video/webm" /> */}
+    Your browser does not support the video tag.
+  </video>
 
-          {/* Play Button */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <motion.button 
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="w-20 h-20 bg-white rounded-full shadow-lg flex items-center justify-center"
-            >
-              <svg
-                className="w-8 h-8 text-yellow-500"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </motion.button>
-          </div>
-        </motion.div>
+  {/* Play Button - Now becomes a toggle for sound */}
+  <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+    <motion.button 
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+      className="w-20 h-20 bg-white/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center"
+      onClick={(e) => {
+        e.preventDefault();
+        const video = e.currentTarget.closest('.relative').querySelector('video');
+        video.muted = !video.muted;
+      }}
+    >
+      <svg
+        className="w-8 h-8 text-lavender-600"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path d="M16 20.334v-2.199a3 3 0 0 0 .82-1.533L16.5 12h-.5a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1h.5l.32-1.602A3 3 0 0 0 16 5.335V3.666a1 1 0 0 1 1.49-.872l8 4.666a1 1 0 0 1 0 1.744l-8 4.666A1 1 0 0 1 16 11.334v9z" />
+      </svg>
+    </motion.button>
+  </div>
+</motion.div>
 
         {/* BOOK NOW sticky side button (optional) */}
        
       </motion.section>
 
-      <motion.section 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={containerVariants}
-        className="relative bg-white py-16 px-4 md:px-10"
-      >
+       <motion.section 
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, margin: "-100px" }}
+  variants={containerVariants}
+  className="relative bg-[url('/bg3.jpg')]  bg-cover bg-center bg-no-repeat py-16 px-4 md:px-10"
+>
      
 
         {/* Content */}
         <div className="max-w-3xl mx-auto text-center md:text-left">
           <motion.h2 
             variants={itemVariants}
-            className="text-3xl md:text-4xl font-light text-gray-900 mb-6 uppercase tracking-wide"
+            className="text-4xl md:text-5xl font-light text-gray-900 mb-6 uppercase tracking-wide"
           >
             Our Philosophy
           </motion.h2>
@@ -359,7 +372,7 @@ export default function Home() {
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="uppercase border border-lavender-600 text-lavender-700 hover:bg-lavender-600 hover:text-white transition px-6 py-2 text-sm tracking-wider"
+            className="uppercase border-2 font-bold border-lavender-600 text-purple-800 hover:bg-lavender-600 text-lg transition px-6 py-2  tracking-wider"
           >
             Book an Appointment
           </motion.button>
@@ -371,7 +384,7 @@ export default function Home() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="py-16 bg-gray-50"
+        className=" relative bg-[url('/bg2.jpg')] bg-cover bg-center bg-no-repeat py-16 px-4 md:px-10"
       >
         <div className="container mx-auto px-4">
           <ContactForm />
