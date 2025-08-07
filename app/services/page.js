@@ -186,7 +186,7 @@ export default function ServicesPage() {
         "Boto-Plastia Treatments",
         "Neo-Plex Treatments"
       ],
-      image: "/keratin.jpg"
+      image: "/keratine.jpg"
     },
     {
       title: "Basic Services",
@@ -213,7 +213,7 @@ export default function ServicesPage() {
         "Fruit Facial",
         "Purifying Facial"
       ],
-      image: "/regular.jpg"
+      image: "/face.png"
     },
     {
       title: "Skin Rituals - Advanced",
@@ -226,7 +226,7 @@ export default function ServicesPage() {
         "Pearl Facial",
         "Gold Facial"
       ],
-      image: "/advanced.jpg"
+      image: "/skin2.jpg"
     },
     {
       title: "Skin Rituals - Premium",
@@ -239,7 +239,7 @@ export default function ServicesPage() {
         "Retinol Facial",
         "Basic Hydra Facial"
       ],
-      image: "/premium.jpg"
+      image: "/skin3.jpg"
     },
     {
       title: "Skin Rituals - Luxury",
@@ -250,7 +250,7 @@ export default function ServicesPage() {
         "Ultimo Shine Facial",
         "Pro-Hydra Facial"
       ],
-      image: "/luxury.jpg"
+      image: "/skin4.jpg"
     },
     {
       title: "Waxing & Polishing",
@@ -266,7 +266,7 @@ export default function ServicesPage() {
         "Full Leg Polishing",
         "Full Body Polishing"
       ],
-      image: "/waxing.jpg"
+      image: "/skin.jpg"
     },
     {
       title: "Pedicure & Manicure",
