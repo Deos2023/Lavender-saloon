@@ -15,20 +15,7 @@ const heroData = [
     rightImg: "/img/4.jpeg",
     textAlign: "right",
   },
-  {
-    title: "SLIP HAIR ACCESSORIES",
-    button: "BUY NOW",
-    leftImg: "/img/5.jpeg",
-    rightImg: "/img/6.jpeg",
-    textAlign: "left",
-  },
-  {
-    title: "TRUDON CANDLES",
-    button: "BUY NOW",
-    leftImg: "/img/2.jpeg",
-    rightImg: "/img/1.jpeg",
-    textAlign: "right",
-  },
+
 ];
 
 export default function HeroSection() {

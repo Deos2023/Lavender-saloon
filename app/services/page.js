@@ -39,13 +39,21 @@ const ServiceCategoryCard = ({ title, services, image, index }) => {
   const isImageLeft = index % 2 === 0;
 
   return (
-    <motion.div
-      variants={itemVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
-      className={`flex flex-col md:flex-row items-center justify-between gap-8 bg-white shadow-lg rounded-xl overflow-hidden p-4 md:p-8 transition-all duration-300 ${!isImageLeft ? 'md:flex-row-reverse' : ''}`}
-    >
+   <motion.div
+  variants={itemVariants}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, margin: "-50px" }}
+  className={`relative flex flex-col md:flex-row items-center justify-between gap-8 shadow-lg rounded-xl overflow-hidden p-4 md:p-8 transition-all duration-300 ${!isImageLeft ? 'md:flex-row-reverse' : ''}`}
+  style={{
+    backgroundImage: "url('/bg3.jpg')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  }}
+>
+  {/* Optional overlay for readability */}
+  {/* <div className="absolute inset-0 bg-white/80 backdrop-blur-sm z-0"></div> */}
+
       {/* Image */}
       <div className="w-full md:w-1/2 h-64 relative">
         <Image
@@ -199,7 +207,7 @@ export default function ServicesPage() {
         "Face Clean Up (Advanced)",
         "Blackhead Removal Clean Up",
         "Eye Care Brightening Treatment"
-      ],
+      ],  
       image: "/basic.jpg"
     },
     {
