@@ -1,3 +1,4 @@
+import Footer from "./component/Footer";
 import Navbar from "./component/Navbar";
 import "./globals.css";
 import { Amatic_SC } from 'next/font/google';
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
       >
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

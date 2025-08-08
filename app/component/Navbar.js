@@ -30,12 +30,8 @@ export default function Navbar() {
           <Link href="/about">About</Link>
           <Link href="/services">Services</Link>
           <Link href="/contact">Contact</Link>
-          <div className="relative group cursor-pointer">
-            <button className="flex items-center gap-1">Hair ▾</button>
-          </div>
-          <div className="relative group cursor-pointer">
-            <button className="flex items-center gap-1">Beauty ▾</button>
-          </div>
+         <Link href="/hair">Hair</Link>
+         <Link href="/beauty">Beauty</Link>
         </nav>
 
         {/* Mobile Menu Links (Toggle) */}
@@ -45,8 +41,8 @@ export default function Navbar() {
             <Link href="/about" onClick={() => setIsOpen(false)}>About</Link>
             <Link href="/services" onClick={() => setIsOpen(false)}>Services</Link>
             <Link href="/contact" onClick={() => setIsOpen(false)}>Contact</Link>
-            <button className="flex items-center gap-1">Hair ▾</button>
-            <button className="flex items-center gap-1">Beauty ▾</button>
+            <Link href="/hair" onClick={() => setIsOpen(false)}>Hair</Link>
+            <Link href="/beauty" onClick={() => setIsOpen(false)}>Beauty</Link>
           </nav>
         )}
       </div>
